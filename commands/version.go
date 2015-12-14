@@ -5,6 +5,7 @@ import (
 	"github.com/codegangsta/cli"
 	"github.com/brooklyncentral/brooklyn-cli/api/version"
 	"github.com/brooklyncentral/brooklyn-cli/command_metadata"
+	"github.com/brooklyncentral/brooklyn-cli/error_handler"
 	"github.com/brooklyncentral/brooklyn-cli/net"
 	"github.com/brooklyncentral/brooklyn-cli/scope"
 )
@@ -29,6 +30,9 @@ func (cmd *Version) Metadata() command_metadata.CommandMetadata {
 }
 
 func (cmd *Version) Run(scope scope.Scope, c *cli.Context) {
+	if err := net.VerifyLoginURL(cmd.network); err != nil {
+		error_handler.ErrorExit(err)
+	}
 	version := version.Version(cmd.network)
 	fmt.Println(version)
 }

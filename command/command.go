@@ -9,4 +9,5 @@ import (
 type Command interface {
 	Metadata() command_metadata.CommandMetadata
 	Run(scope scope.Scope, context *cli.Context)
+    Verify() error
 }

@@ -6,9 +6,11 @@ import (
 	"github.com/brooklyncentral/brooklyn-cli/command_metadata"
 	"github.com/brooklyncentral/brooklyn-cli/net"
 	"github.com/brooklyncentral/brooklyn-cli/scope"
+    "github.com/brooklyncentral/brooklyn-cli/command"
 )
 
 type AddPolicy struct {
+    command.Verifier
 	network *net.Network
 }
 

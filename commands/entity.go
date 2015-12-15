@@ -11,15 +11,18 @@ import (
     "fmt"
     "github.com/brooklyncentral/brooklyn-cli/api/entity_sensors"
     "github.com/brooklyncentral/brooklyn-cli/error_handler"
+    "github.com/brooklyncentral/brooklyn-cli/command"
 )
 
 type Entity struct {
+    command.Verifier
 	network *net.Network
 }
 
 func NewEntity(network *net.Network) (cmd *Entity) {
 	cmd = new(Entity)
 	cmd.network = network
+    cmd.Verifier.SetNetwork(network)
 	return
 }
 

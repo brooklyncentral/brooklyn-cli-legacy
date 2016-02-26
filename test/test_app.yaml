@@ -1,5 +1,0 @@
-name: Test Tomcat
-location:
-  replaceMeWithYourLocation
-services:
-  - type: org.apache.brooklyn.entity.webapp.tomcat.TomcatServer
